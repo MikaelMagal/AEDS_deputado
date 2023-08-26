@@ -133,13 +133,14 @@ def plot_graph(graph, politicians_data, parties, year):
 
 # Exemplo de uso
 if __name__ == "__main__":
+    print("Aviso!!!!\nOs graficos e grafo serao abertos 1 a 1 em tela, para abrir o proximo se deve fechar o png que se abriu. Porem eles ficarao salvos na pasta para visualizacao posterior.")
     year = input("Defina o ano que deseja:\n")
     
     user_input = input("Digite os nomes dos partidos em separados por vírgula em maiusculo, exemplo PT, PSOL: ")
     user_party_names = [party.strip() for party in user_input.split(",")]
     parties = user_party_names
     
-    threshold = input("Informe o percentual minimo de concord^ancia ( threshold ) ( ex . 0.9):")
+    threshold = input("Informe o percentual minimo de concordancia ( threshold ) ( ex . 0.9):")
 
     graph_txt_filename = f"graph{year}.txt"
     politicians_txt_filename = f"politicians{year}.txt"
