@@ -3,7 +3,6 @@ import networkx as nx
 import seaborn as sns
 
 
-# Leitura dos arquivos CSV e criação do grafo
 def create_graph_from_txt(graph_filename):
     G = nx.Graph()
     with open(graph_filename, 'r', encoding='utf-8') as txtfile:
@@ -67,7 +66,6 @@ def plot_centrality_graph(graph, centrality_values, year):
     nodes = list(graph.nodes())
     centrality = [centrality_values[node] for node in nodes]
     
-    # Ordenar os nós de acordo com a centralidade de betweenness
     sorted_nodes = [node for _, node in sorted(zip(centrality, nodes))]
     sorted_centrality = sorted(centrality)
     
@@ -98,10 +96,9 @@ def create_heatmap(graph, year):
     plt.show()
 
 def plot_graph(graph, politicians_data, parties, year):
-    pos = nx.spring_layout(graph, k=2, iterations=0, seed=20)
+    pos = nx.spring_layout(graph, k=2.0, iterations=0, seed=20)
     color = {}
     
-    # Mapear partidos para cores
     party_colors = {
         "PT": "red",
         "PSOL": "green",
@@ -109,7 +106,7 @@ def plot_graph(graph, politicians_data, parties, year):
         "REPUBLICANOS": "grey",
         "MDB" : "yellow",
         "PMDB" : "yellow",
-        # Adicione mais partidos e cores conforme necessário
+        "PL" : "pink",
     }
     
     for node in graph.nodes():
@@ -138,10 +135,9 @@ def plot_graph(graph, politicians_data, parties, year):
 if __name__ == "__main__":
     year = input("Defina o ano que deseja:\n")
     
-    user_input = input("Digite os nomes dos partidos em maiusculo separados por vírgula em maiusculo, exemplo PT, PSOL: ")
+    user_input = input("Digite os nomes dos partidos em separados por vírgula em maiusculo, exemplo PT, PSOL: ")
     user_party_names = [party.strip() for party in user_input.split(",")]
     parties = user_party_names
-    print(parties)
     
     threshold = input("Informe o percentual minimo de concord^ancia ( threshold ) ( ex . 0.9):")
 
