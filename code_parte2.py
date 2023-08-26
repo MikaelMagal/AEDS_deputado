@@ -63,7 +63,7 @@ def compute_betweenness_centrality(graph):
     betweenness_centrality = nx.betweenness_centrality(graph)
     return betweenness_centrality
 
-def plot_centrality_graph(graph, centrality_values):
+def plot_centrality_graph(graph, centrality_values, year):
     nodes = list(graph.nodes())
     centrality = [centrality_values[node] for node in nodes]
     
@@ -79,11 +79,11 @@ def plot_centrality_graph(graph, centrality_values):
     plt.xticks(rotation=90)
     plt.tight_layout()
     
-    plt.savefig("centralidade_betweenness_ordenado.png")
+    plt.savefig(f"centralidade_betweenness_ordenado{year}.png")
     plt.show()
     
 #função para mapa de calor
-def create_heatmap(graph):
+def create_heatmap(graph, year):
     adjacency_matrix = nx.to_pandas_adjacency(graph, dtype=float)
     correlation_matrix = adjacency_matrix.corr()
     
@@ -94,10 +94,10 @@ def create_heatmap(graph):
     plt.yticks(rotation=0)# Rotacionar rótulos do eixo X para melhor visibilidade
     plt.tight_layout()
     
-    plt.savefig("heatmap.png")
+    plt.savefig(f"heatmap{year}.png")
     plt.show()
 
-def plot_graph(graph, politicians_data, parties):
+def plot_graph(graph, politicians_data, parties, year):
     pos = nx.spring_layout(graph, k=2, iterations=0, seed=20)
     color = {}
     
@@ -130,6 +130,8 @@ def plot_graph(graph, politicians_data, parties):
     
     plt.title("Grafo de Relações de Votos entre Deputados")
     plt.tight_layout()
+    nome_arquivo = f"grafo_plot_{year}"
+    plt.savefig(nome_arquivo)
     plt.show()
 
 # Exemplo de uso
@@ -158,13 +160,13 @@ if __name__ == "__main__":
     compute_betweenness_centrality_graph = compute_betweenness_centrality(inverted_weight_graph)
     
     #grafico da centralidade
-    plot_centrality_graph(inverted_weight_graph, compute_betweenness_centrality_graph)
+    plot_centrality_graph(inverted_weight_graph, compute_betweenness_centrality_graph, year)
     
     #grafico do mapa de calor
-    create_heatmap(normalized_graph)
+    create_heatmap(normalized_graph, year)
     
     #plot do grafo
-    plot_graph(thresholded_graph, politicians_data, parties)
+    plot_graph(thresholded_graph, politicians_data, parties, year)
     
     
     
