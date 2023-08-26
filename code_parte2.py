@@ -78,6 +78,7 @@ def plot_centrality_graph(graph, centrality_values, year):
     plt.tight_layout()
     
     plt.savefig(f"centralidade_betweenness_ordenado{year}.png")
+    print(f"Grafico de centralidade escrito no arquivo centralidade_betweenness_ordenado{year}.png")
     plt.show()
     
 #função para mapa de calor
@@ -93,6 +94,7 @@ def create_heatmap(graph, year):
     plt.tight_layout()
     
     plt.savefig(f"heatmap{year}.png")
+    print(f"Heat map escrito no arquivo heatmap{year}.png")
     plt.show()
 
 def plot_graph(graph, politicians_data, parties, year):
@@ -128,6 +130,7 @@ def plot_graph(graph, politicians_data, parties, year):
     plt.title("Grafo de Relações de Votos entre Deputados")
     plt.tight_layout()
     nome_arquivo = f"grafo_plot_{year}"
+    print("Plot graph escrito no arquivo ", nome_arquivo)
     plt.savefig(nome_arquivo)
     plt.show()
 
@@ -144,6 +147,7 @@ if __name__ == "__main__":
 
     graph_txt_filename = f"graph{year}.txt"
     politicians_txt_filename = f"politicians{year}.txt"
+    
     
     grafo_numero_votos = get_number_votes(politicians_txt_filename)
     
