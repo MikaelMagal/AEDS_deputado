@@ -107,7 +107,8 @@ def plot_graph(graph, politicians_data, parties):
         "PSOL": "green",
         "NOVO": "blue",
         "REPUBLICANOS": "grey",
-        "MDB" : "yellow"
+        "MDB" : "yellow",
+        "PMDB" : "yellow",
         # Adicione mais partidos e cores conforme necessário
     }
     
